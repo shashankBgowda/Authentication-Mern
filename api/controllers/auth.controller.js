@@ -30,7 +30,7 @@ export const signin = async(req, res, next)=>{
        //now if both emial and password are correct them we add token to the cookie of the browser... 
        const token = jwt.sign({id:validuser._id}, process.env.JWT_SECRET)
        //in the output, we dont want to get the hased password, so we should remove it.
-       const {password:hashedpassword, ...rest} = validuser._doc;
+       const {password:hashedpassword, ...rest} = validuser._doc;//here we get everything except password
        //will put this token inside the cookies
        const expiryDate = new Date(Date.now() + 3600000);
        res
